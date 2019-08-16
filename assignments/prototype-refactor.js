@@ -155,7 +155,7 @@ class Villain extends Humanoid{
   }
 }
 
-  let superNan = new Hero({
+  const superNan = new Hero({
     createdAt: new Date(),
     dimensions: {
       length: 2,

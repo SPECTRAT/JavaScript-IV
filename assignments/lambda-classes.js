@@ -1,5 +1,5 @@
 // CODE here for your Lambda Classes
-
+console.log("------------------------------LAMBDA CLASSES-------------------------------------");
 // ## `lambda-classes` - We need a roster of Lambda School personnel. Build it!
 
 // * We have a school to build here! This project will get you used to thinking about classes in JavaScript and building them from a brand new data set.
@@ -53,8 +53,8 @@ class Person {
 class Instructor extends Person {
   constructor(instructAttr) {
     super(instructAttr);
-    this.specialty = instructAttr.specialty;
     this.favLanguage = instructAttr.favLanguage;
+    this.specialty = instructAttr.specialty;
     this.catchPhrase = instructAttr.catchPhrase;
   }
   demo(subject) {
@@ -64,6 +64,24 @@ class Instructor extends Person {
     return `${student.name} recieves a perfect score on ${subject}.`;
   }
 }
+
+const reggie = new Instructor({
+  name: "Reginald Swanson",
+  age: 37,
+  location: "Portland, Oregon",
+  favLanguage: "C#",
+  specialty: "Satements and Expressions",
+  catchPhrase: "It's time to d-d-d-duel!"
+});
+
+const amy = new Instructor({
+  name: "Amy Smithers",
+  age: 30,
+  location: "Cleveland, Ohio",
+  favLanguage: "JavaScript",
+  specialty: "React",
+  catchPhrase: "Make it so."
+});
 
 // #### Student
 
@@ -83,7 +101,7 @@ class Student extends Person {
     super(studentAttr);
     this.previousBg = studentAttr.previousBg;
     this.className = studentAttr.className;
-    this.favSubjects = [studentAttr.favSubjects];
+    this.favSubjects = studentAttr.favSubjects;
   }
   listsSubjects() {
     return this.favSubjects;
@@ -95,6 +113,31 @@ class Student extends Person {
     return `${student.name} has begun sprint challenge on ${subject}`;
   }
 }
+
+const karen = new Student ({
+  name: "Karen Maren",
+  age: 24,
+  location: "Indianapolis, Indiana",
+  previousBg: "Finance",
+  className: "UX12",
+  favSubjects: [
+    "Typography", 
+    "Color Theory",
+  ]
+});
+
+const bryan = new Student ({
+  name: "Bryan Angelo",
+  age: 40,
+  location: "Louisville, Kentucky",
+  previousBg: "Customer Service",
+  className: "WEB12",
+  favSubjects: [
+    "CSS",
+    "HTML",
+    "JavaScript"
+  ]
+});
 
 // #### Team Lead
 
@@ -121,6 +164,27 @@ class TeamLead extends Instructor {
   }
 }
 
+const gary = new TeamLead({
+  name: "Gary Potter",
+  age: 28,
+  location: "Oakland, California",
+  favLanguage: "Ruby",
+  specialty: "Rails",
+  catchPhrase: "Dyn-o-mite!",
+  gradClassName: "WEB3",
+  favInstructor: amy
+});
+
+const auggy = new TeamLead ({
+  name: "Augustine Glass",
+  age: 42,
+  location: "Seattle, Washington",
+  favLanguage: "C++",
+  specialty: "Robotics",
+  catchPhrase: "What you talkin' 'bout Willis?",
+  gradClassName: "DS1",
+  favInstructor: reggie
+});
 
 // #### Stretch Problem
 
