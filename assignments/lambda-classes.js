@@ -28,12 +28,12 @@
 // * This method logs out a phrase `Hello my name is Fred, I am from Bedrock` where `name` and `location` are the object's own props
 
 class Person {
-  constructor(personAtts){
+  constructor(personAtts) {
     this.name = personAtts.name;
     this.age = personAtts.age;
     this.location = personAtts.location;
   }
-  greet(){
+  greet() {
     return `Hello! My name is ${this.name}, I'm from ${this.location}.`;
   }
 }
@@ -50,14 +50,17 @@ class Person {
 //   * `demo` receives a `subject` string as an argument and logs out the phrase 'Today we are learning about {subject}' where subject is the param passed in.
 //   * `grade` receives a `student` object and a `subject` string as arguments and logs out '{student.name} receives a perfect score on {subject}'
 
-class Instructor extends Person{
-  constructor(instructAttr){
+class Instructor extends Person {
+  constructor(instructAttr) {
     super(instructAttr);
     this.specialty = instructAttr.specialty;
     this.favLanguage = instructAttr.favLanguage;
     this.catchPhrase = instructAttr.catchPhrase;
   }
-  demo(student, subject){
+  demo(subject) {
+    return `Today we're learning about ${subject}.`;
+  }
+  grade(student, subject) {
     return `${student.name} recieves a perfect score on ${subject}.`;
   }
 }
@@ -75,7 +78,25 @@ class Instructor extends Person{
 //   * `PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
 //   * `sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`
 
-// #### Project Manager
+class Student extends Person {
+  constructor(studentAttr) {
+    super(studentAttr);
+    this.previousBg = studentAttr.previousBg;
+    this.className = studentAttr.className;
+    this.favSubjects = [studentAttr.favSubjects];
+  }
+  listsSubjects() {
+    return this.favSubjects;
+  }
+  PRAssignment(subject) {
+    return `${student.name} has submitted a PR for ${subject}.`
+  }
+  springChalenge(subject) {
+    return `${student.name} has begun sprint challenge on ${subject}`;
+  }
+}
+
+// #### Team Lead
 
 // * Now that we have instructors and students, we'd be nowhere without our PM's
 // * ProjectManagers are extensions of Instructors
@@ -85,6 +106,21 @@ class Instructor extends Person{
 // * ProjectManagers have the following Methods:
 //   * `standUp` a method that takes in a slack channel and logs `{name} announces to {channel}, @channel standy times!​​​​​
 //   * `debugsCode` a method that takes in a student object and a subject and logs out `{name} debugs {student.name}'s code on {subject}`
+
+class TeamLead extends Instructor {
+  constructor(tlAttr) {
+    super(tlAttr);
+    this.gradClassName = tlAttr.gradClassName;
+    this.favInstructor = tlAttr.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!!`;
+  }
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
+}
+
 
 // #### Stretch Problem
 

@@ -217,4 +217,3 @@ class Villain extends Humanoid{
   console.log(terrTwo.takeDamage(15));
   console.log(terrTwo.destroy());
   console.log(`${superNan.name} is the victor!!`);
-  
