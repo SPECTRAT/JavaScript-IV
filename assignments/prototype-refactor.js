@@ -17,7 +17,7 @@
   
 //   Each constructor function has unique properties and methods that are defined in their block comments below:
 // */
-// console.log("----------------------- PROTOTYPES-------------------------------------")
+ console.log("----------------------- PROTOTYPE-REFRACTOR-------------------------------------")
 // /*
 //   === GameObject ===
   
@@ -197,6 +197,24 @@ class Humanoid extends CharacterStats {
 //     return `${this.name} healed themselves for 10 HP.`
 //   }
 
+class Hero extends Humanoid {
+  constructor(heroAttr){
+    super(heroAttr);
+    this.megaMove = heroAttr.megaMove;
+  }
+  battleCry(){
+    return `${this.name} give a mighty battle cry in ${this.language}!`;
+  }
+  clobber(weapon, opponent){
+    return `${this.name} used  ${weapon} to clobber ${opponent}.`;
+  }
+  mega(megaMove, opponent){
+    return `${this.name} used special move, ${megaMove}, on ${opponent}!`;
+  }
+  healing(){
+    return `${this.name} healed themselves for 10 HP.`;
+  }
+}
 
 //   function Villain(villainAttr) {
 //     Humanoid.call(this, villainAttr);  
@@ -206,73 +224,89 @@ class Humanoid extends CharacterStats {
 //   Villain.prototype.battleCry = function() {
 //     return `${this.name} gives an monsterous battle cry in ${this.language}!`;
 //   }
-//   Villain.prototype.smash = function(weapon, opponent) {
-//     return `${this.name} used  ${weapon} to smash ${opponent}.`
-//   };
-//   Hero.prototype.mega = function(megaMove, opponent) {
-//     return `${this.name} used special move, ${megaMove}, on ${opponent}!`
-//   };
+  // Villain.prototype.smash = function(weapon, opponent) {
+  //   return `${this.name} used  ${weapon} to smash ${opponent}.`
+  // };
+  // Hero.prototype.mega = function(megaMove, opponent) {
+  //   return `${this.name} used special move, ${megaMove}, on ${opponent}!`
+  // };
 
-//   let superNan = new Hero({
-//     createdAt: new Date(),
-//     dimensions: {
-//       length: 2,
-//       width: 3,
-//       height: 6,
-//     },
-//     healthPoints: 25,
-//     name: 'Super Nanny',
-//     team: 'Better Behavior Brigade',
-//     weapons: [
-//       'Book of Discipline',
-//       'Time Out Token'
-//     ],
-//     language: `The Queen's English`,
-//     megaMove : "A Firm Talking To"
-//   });
+class Villain extends Humanoid{
+  constructor(villainAttr){
+    super(villainAttr);
+    this.megaMove = villainAttr.megaMove;
+  }
+  battleCry() {
+    return `${this.name} gives an monsterous battle cry in ${this.language}!`;
+  }
+  smash(weapon, opponent) {
+    return `${this.name} used  ${weapon} to smash ${opponent}.`;
+  }
+  mega(megaMove, opponent) {
+    return `${this.name} used special move, ${megaMove}, on ${opponent}!`;
+  }
+}
 
-//   const terrTwo = new Villain({
-//     createdAt: new Date(),
-//     dimensions: {
-//       length: 0.5,
-//       width: 1,
-//       height: 1,
-//     },
-//     healthPoints: 30,
-//     name: 'Terrible Two Timmy',
-//     team: 'No-Nappers',
-//     weapons: [
-//       'Death Rattle',
-//       'Sonic Tantrum Blast',
-//       'Binky Boomerang'
-//     ],
-//     language: 'Baby Talk',
-//     megaMove: 'Turbo Tantrum'
-//   });
+  let superNan = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 3,
+      height: 6,
+    },
+    healthPoints: 25,
+    name: 'Super Nanny',
+    team: 'Better Behavior Brigade',
+    weapons: [
+      'Book of Discipline',
+      'Time Out Token'
+    ],
+    language: `The Queen's English`,
+    megaMove : "A Firm Talking To"
+  });
 
-//   console.log(terrTwo.battleCry());
-//   console.log("...");
-//   console.log(superNan.battleCry());
-//   console.log("...");
-//   console.log(superNan.clobber(superNan.weapons[0], terrTwo.name));
-//   console.log(terrTwo.takeDamage(10));
-//   console.log("...");
-//   console.log(terrTwo.smash(terrTwo.weapons[1], superNan.name));
-//   console.log(superNan.takeDamage(10));
-//   console.log("...");
-//   console.log(superNan.clobber(superNan.weapons[1], terrTwo.name));
-//   console.log(terrTwo.takeDamage(10));
-//   console.log("...");
-//   console.log(terrTwo.smash(terrTwo.weapons[0], superNan.name));
-//   console.log(superNan.takeDamage(7));
-//   console.log("...");
-//   console.log(superNan.healing());
-//   console.log("...");
-//   console.log(terrTwo.smash(terrTwo.weapons[0], superNan.name));
-//   console.log(superNan.takeDamage(10));
-//   console.log("...");
-//   console.log(superNan.mega(superNan.megaMove));
-//   console.log(terrTwo.takeDamage(15));
-//   console.log(terrTwo.destroy());
-//   console.log(`${superNan.name} is the victor!!`);
+  const terrTwo = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+      length: 0.5,
+      width: 1,
+      height: 1,
+    },
+    healthPoints: 30,
+    name: 'Terrible Two Timmy',
+    team: 'No-Nappers',
+    weapons: [
+      'Death Rattle',
+      'Sonic Tantrum Blast',
+      'Binky Boomerang'
+    ],
+    language: 'Baby Talk',
+    megaMove: 'Turbo Tantrum'
+  });
+
+  console.log(terrTwo.battleCry());
+  console.log("...");
+  console.log(superNan.battleCry());
+  console.log("...");
+  console.log(superNan.clobber(superNan.weapons[0], terrTwo.name));
+  console.log(terrTwo.takeDamage(10));
+  console.log("...");
+  console.log(terrTwo.smash(terrTwo.weapons[1], superNan.name));
+  console.log(superNan.takeDamage(10));
+  console.log("...");
+  console.log(superNan.clobber(superNan.weapons[1], terrTwo.name));
+  console.log(terrTwo.takeDamage(10));
+  console.log("...");
+  console.log(terrTwo.smash(terrTwo.weapons[0], superNan.name));
+  console.log(superNan.takeDamage(7));
+  console.log("...");
+  console.log(superNan.healing());
+  console.log("...");
+  console.log(terrTwo.smash(terrTwo.weapons[0], superNan.name));
+  console.log(superNan.takeDamage(10));
+  console.log("...");
+  console.log(superNan.mega(superNan.megaMove));
+  console.log(terrTwo.takeDamage(15));
+  console.log(terrTwo.destroy());
+  console.log(`${superNan.name} is the victor!!`);
   
