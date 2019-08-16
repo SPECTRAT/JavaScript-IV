@@ -128,10 +128,10 @@ class Hero extends Humanoid {
     return `${this.name} give a mighty battle cry in ${this.language}!`;
   }
   clobber(weapon, opponent){
-    return `${this.name} used  ${weapon} to clobber ${opponent}.`;
+    return `${this.name} used  ${weapon} to clobber ${opponent.name}.`;
   }
   mega(megaMove, opponent){
-    return `${this.name} used special move, ${megaMove}, on ${opponent}!`;
+    return `${this.name} used special move, ${megaMove}, on ${opponent.name}!`;
   }
   healing(){
     return `${this.name} healed themselves for 10 HP.`;
@@ -148,10 +148,10 @@ class Villain extends Humanoid{
     return `${this.name} gives an monsterous battle cry in ${this.language}!`;
   }
   smash(weapon, opponent) {
-    return `${this.name} used  ${weapon} to smash ${opponent}.`;
+    return `${this.name} used  ${weapon} to smash ${opponent.name}.`;
   }
   mega(megaMove, opponent) {
-    return `${this.name} used special move, ${megaMove}, on ${opponent}!`;
+    return `${this.name} used special move, ${megaMove}, on ${opponent.name}!`;
   }
 }
 
@@ -199,21 +199,21 @@ class Villain extends Humanoid{
   console.log(superNan.clobber(superNan.weapons[0], terrTwo.name));
   console.log(terrTwo.takeDamage(10));
   console.log("...");
-  console.log(terrTwo.smash(terrTwo.weapons[1], superNan.name));
+  console.log(terrTwo.smash(terrTwo.weapons[1], superNan));
   console.log(superNan.takeDamage(10));
   console.log("...");
-  console.log(superNan.clobber(superNan.weapons[1], terrTwo.name));
+  console.log(superNan.clobber(superNan.weapons[1], terrTwo));
   console.log(terrTwo.takeDamage(10));
   console.log("...");
-  console.log(terrTwo.smash(terrTwo.weapons[0], superNan.name));
+  console.log(terrTwo.smash(terrTwo.weapons[0], superNan));
   console.log(superNan.takeDamage(7));
   console.log("...");
   console.log(superNan.healing());
   console.log("...");
-  console.log(terrTwo.smash(terrTwo.weapons[0], superNan.name));
+  console.log(terrTwo.smash(terrTwo.weapons[0], superNan));
   console.log(superNan.takeDamage(10));
   console.log("...");
-  console.log(superNan.mega(superNan.megaMove));
+  console.log(superNan.mega(superNan.megaMove, terrTwo));
   console.log(terrTwo.takeDamage(15));
   console.log(terrTwo.destroy());
   console.log(`${superNan.name} is the victor!!`);
