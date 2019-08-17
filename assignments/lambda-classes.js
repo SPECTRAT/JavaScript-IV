@@ -104,6 +104,7 @@ class Student extends Person {
     this.favSubjects = studentAttr.favSubjects;
   }
   listsSubjects() {
+    //foreach method fix individually display.
     return this.favSubjects;
   }
   PRAssignment(subject) {
