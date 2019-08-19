@@ -64,6 +64,11 @@ class Instructor extends Person {
   grade(student, subject) {
     return `${student.name} recieves a perfect score on ${subject}.`;
   }
+  studentPoints(student) {
+    const randomNum = Math.floor(Math.random() * (50 - 10) + 10);
+    const plusOrMinus = (Math.random < 0.5) ? -1 : 1;
+    return (randomNum * plusOrMinus) + student.grade;
+  }
 }
 
 const reggie = new Instructor({
@@ -104,6 +109,7 @@ class Student extends Person {
     this.previousBg = studentAttr.previousBg;
     this.className = studentAttr.className;
     this.favSubjects = studentAttr.favSubjects;
+    this.grade = studentAttr.grade;
   }
   listsSubjects() {
     //foreach method fix individually display.
@@ -177,6 +183,7 @@ class TeamLead extends Instructor {
   debugsCode(student, subject) {
     return `${this.name} debugs ${student.name}'s code on ${subject}`;
   }
+  
 }
 
 const gary = new TeamLead({
