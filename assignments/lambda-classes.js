@@ -59,15 +59,17 @@ class Instructor extends Person {
     this.catchPhrase = instructAttr.catchPhrase;
   }
   demo(subject) {
-    return `Today we're learning about ${subject}.`;
+    return `I'm ${this.name} and today we're learning about ${subject}!`;
   }
   grade(student, subject) {
     return `${student.name} recieves a perfect score on ${subject}.`;
   }
-  studentPoints(student) {
+  studentGrade(student) {
     const randomNum = Math.floor(Math.random() * (50 - 10) + 10);
     const plusOrMinus = (Math.random < 0.5) ? -1 : 1;
-    return (randomNum * plusOrMinus) + student.grade;
+    const newGrade = (randomNum * plusOrMinus) + student.grade;
+    const stundetGrade = student.grade = newGrade;
+    console.log(`${student.name}'s current grade is ${stundetGrade}`);
   }
 }
 
@@ -132,7 +134,8 @@ const karen = new Student ({
   favSubjects: [
     "Typography", 
     "Color Theory",
-  ]
+  ],
+  grade: 60
 });
 
 const bryan = new Student ({
@@ -145,7 +148,8 @@ const bryan = new Student ({
     "CSS",
     "HTML",
     "JavaScript"
-  ]
+  ],
+  grade: 54
 });
 
 const lydia = new Student({
@@ -157,7 +161,8 @@ const lydia = new Student({
   favSubjects: [
     "React",
     "Data Structures"
-  ]
+  ],
+  grade: 95
 });
 
 // #### Team Lead
@@ -219,11 +224,11 @@ const beth = new TeamLead ({
   favInstructor: amy
 });
 
-console.log(reggie.greet());
-console.log(amy.favLanguage);
+console.log(reggie.demo("Functions"));
+console.log(amy.grade(bryan,"Intro to Git"));
 console.log(karen.PRAssignment("Color Theory"));
 console.log(bryan.listsSubjects());
-console.log(lydia.className);
+console.log(lydia.sprintChalenge("JavaScript Fundamentals"));
 console.log(gary.debugsCode(bryan, "Advanced CSS"));
 console.log(auggy.standUp("web13_augustine"));
 console.log(beth.catchPhrase);
@@ -235,3 +240,7 @@ console.log(beth.catchPhrase);
 // * Add a graduate method to a student.
 //   * This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
 //   * If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
+
+reggie.studentGrade(karen);
+console.log(karen.grade);
+console.log(bryan.grade);
