@@ -1,5 +1,6 @@
-// CODE here for your Lambda Classes
+
 console.log("------------------------------LAMBDA CLASSES-------------------------------------");
+
 // ## `lambda-classes` - We need a roster of Lambda School personnel. Build it!
 
 // * We have a school to build here! This project will get you used to thinking about classes in JavaScript and building them from a brand new data set.
@@ -83,6 +84,7 @@ const amy = new Instructor({
   catchPhrase: "Make it so."
 });
 
+
 // #### Student
 
 // * Now we need some students!
@@ -108,10 +110,10 @@ class Student extends Person {
     return this.favSubjects;
   }
   PRAssignment(subject) {
-    return `${student.name} has submitted a PR for ${subject}.`
+    return `${this.name} has submitted a Pull Request for ${subject}.`
   }
-  springChalenge(subject) {
-    return `${student.name} has begun sprint challenge on ${subject}`;
+  sprintChalenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}`;
   }
 }
 
@@ -140,6 +142,18 @@ const bryan = new Student ({
   ]
 });
 
+const lydia = new Student({
+  name: "Lydia Marks",
+  age: 21,
+  location: "Macon, Georgia",
+  previousBg: "Graphic Design",
+  className: "WEBPT10",
+  favSubjects: [
+    "React",
+    "Data Structures"
+  ]
+});
+
 // #### Team Lead
 
 // * Now that we have instructors and students, we'd be nowhere without our PM's
@@ -158,7 +172,7 @@ class TeamLead extends Instructor {
     this.favInstructor = tlAttr.favInstructor;
   }
   standUp(channel) {
-    return `${this.name} announces to ${channel}, @channel standy times!!`;
+    return `${this.name} announces to ${channel}, "@channel standy times!!"`;
   }
   debugsCode(student, subject) {
     return `${this.name} debugs ${student.name}'s code on ${subject}`;
@@ -178,7 +192,7 @@ const gary = new TeamLead({
 
 const auggy = new TeamLead ({
   name: "Augustine Glass",
-  age: 42,
+  age: 45,
   location: "Seattle, Washington",
   favLanguage: "C++",
   specialty: "Robotics",
@@ -186,6 +200,26 @@ const auggy = new TeamLead ({
   gradClassName: "DS1",
   favInstructor: reggie
 });
+
+const beth = new TeamLead ({
+  name: "Elizabeth Randolph",
+  age: 32,
+  location: "Phoenix, Arizona",
+  favLanguage: "Swift",
+  specialty: "Frameworks",
+  catchPhrase: "Did I do thaaaaat?",
+  gradClassName: "iOS4",
+  favInstructor: amy
+});
+
+console.log(reggie.greet());
+console.log(amy.favLanguage);
+console.log(karen.PRAssignment("Color Theory"));
+console.log(bryan.listsSubjects());
+console.log(lydia.className);
+console.log(gary.debugsCode(bryan, "Advanced CSS"));
+console.log(auggy.standUp("web13_augustine"));
+console.log(beth.catchPhrase);
 
 // #### Stretch Problem
 
