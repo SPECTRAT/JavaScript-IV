@@ -65,17 +65,27 @@ class Instructor extends Person {
     return `${student.name} recieves a perfect score on ${subject}.`;
   }
   studentGrade(student) {
-    const randomNum = Math.floor(Math.random() * (20 - 1) + 1);
-    const plusOrMinus = (Math.random < 0.5) ? -1 : 1;
+    const randomNum = Math.floor(Math.random() * (15 - 5) + 10);
+    const plusOrMinus = (Math.random() < 0.2) ? -1 : 1;
+    //random chance between plus or minus
     const newGrade = (randomNum * plusOrMinus) + student.grade;
-    const stundetGrade = student.grade = newGrade;
-    console.log(`${student.name}'s current grade is ${stundetGrade}`);
+    //to add or subtract random number from student grade
+    const finalGrade = (student.grade = newGrade);
+    //changes student grade to new value.
+    console.log(`${student.name}'s current grade is ${finalGrade}`);
   }
   graduate(student) {
-    while (student.grade < 70) {
-      this.studentGrade(student);
-      //adds or subtracts random number to student's grade
-      if (student.grade > 70){console.log(`They have graduated from Lambda School!`)}
+      if (student.grade > 70) {
+        return `Congrats, ${student.name} has graduated from Lambda School!!`;
+        //if student's grade is over 70% returns grad message
+      } else {
+        while (student.grade < 70) {
+        this.studentGrade(student);
+        //if not over 70% randomly grades assignments until over 70% is met.
+        if (student.grade > 70) {
+          console.log( `Congrats, ${student.name} has graduated from Lambda School!!`);
+        }
+       }
     }
   }
 }
@@ -250,7 +260,11 @@ console.log("----------------------------------STRETCH--------------------------
 //   * This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
 //   * If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 
-reggie.graduate(karen);
+reggie.studentGrade(karen);
 console.log("");
-reggie.graduate(bryan);
+console.log(reggie.graduate(karen));
+console.log("");
+console.log(reggie.graduate(bryan));
+//example of student already qualifying for graduation.
+
 
