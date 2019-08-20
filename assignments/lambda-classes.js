@@ -65,11 +65,18 @@ class Instructor extends Person {
     return `${student.name} recieves a perfect score on ${subject}.`;
   }
   studentGrade(student) {
-    const randomNum = Math.floor(Math.random() * (50 - 10) + 10);
+    const randomNum = Math.floor(Math.random() * (20 - 1) + 1);
     const plusOrMinus = (Math.random < 0.5) ? -1 : 1;
     const newGrade = (randomNum * plusOrMinus) + student.grade;
     const stundetGrade = student.grade = newGrade;
     console.log(`${student.name}'s current grade is ${stundetGrade}`);
+  }
+  graduate(student) {
+    while (student.grade < 70) {
+      this.studentGrade(student);
+      //adds or subtracts random number to student's grade
+      if (student.grade > 70){console.log(`They have graduated from Lambda School!`)}
+    }
   }
 }
 
@@ -135,7 +142,7 @@ const karen = new Student ({
     "Typography", 
     "Color Theory",
   ],
-  grade: 60
+  grade: 10
 });
 
 const bryan = new Student ({
@@ -149,7 +156,7 @@ const bryan = new Student ({
     "HTML",
     "JavaScript"
   ],
-  grade: 54
+  grade: 94
 });
 
 const lydia = new Student({
@@ -235,12 +242,15 @@ console.log(beth.catchPhrase);
 
 // #### Stretch Problem
 
+console.log("----------------------------------STRETCH----------------------------------------")
+
 // * Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
 // * Now that our students have a grade build out a method on the Instructor (this will be used by _BOTH_ instructors and PM's) that will randomly add or subtract points to a student's grade. _Math.random_ will help.
 // * Add a graduate method to a student.
 //   * This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
 //   * If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 
-reggie.studentGrade(karen);
-console.log(karen.grade);
-console.log(bryan.grade);
+reggie.graduate(karen);
+console.log("");
+reggie.graduate(bryan);
+
